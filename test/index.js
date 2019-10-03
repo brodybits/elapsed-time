@@ -6,6 +6,7 @@ function sleep (timeout) {
   return new Promise((resolve) => { setTimeout(resolve, timeout) })
 }
 
+// QUICK TEST WORKAROUND SOLUTION:
 const onLinuxIt = (
   (process.platform === 'linux')
     ? it
