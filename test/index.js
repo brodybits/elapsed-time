@@ -7,8 +7,13 @@ function sleep (timeout) {
 }
 
 // QUICK TEST WORKAROUND SOLUTION:
-const onLinuxIt = (
+const itOnLinux = (
   (process.platform === 'linux')
+    ? it
+    : it.skip
+)
+const itOnLinuxOrBrowser = (
+  (process.platform === 'linux' || !process.platform)
     ? it
     : it.skip
 )
@@ -63,7 +68,7 @@ describe('ElapsedTime', () => {
     expect(::et.resume).to.throw(Error)
   })
 
-  onLinuxIt('#resume & #getRawValue', async () => {
+  itOnLinux('#resume & #getRawValue', async () => {
     et.start()
     await sleep(10)
     et.pause()
@@ -73,7 +78,7 @@ describe('ElapsedTime', () => {
     expect(et.getRawValue()).to.be.within(19 * 1e6, 28 * 1e6)
   })
 
-  onLinuxIt('#sleep & #getRawValue', async () => {
+  itOnLinuxOrBrowser('#sleep & #getRawValue', async () => {
     et.start().sleep(10)
     await sleep(12)
     expect(et.getRawValue()).to.be.within(0, 4 * 1e6)
@@ -99,7 +104,7 @@ describe('ElapsedTime', () => {
     expect(::et.getRawValue).to.throw(Error)
   })
 
-  onLinuxIt('#getRawValue', async () => {
+  itOnLinuxOrBrowser('#getRawValue', async () => {
     et.start()
     await sleep(10)
     expect(et.getRawValue()).to.be.within(9 * 1e6, 14 * 1e6)
@@ -107,7 +112,7 @@ describe('ElapsedTime', () => {
     expect(et.getRawValue()).to.be.within(19 * 1e6, 26 * 1e6)
   })
 
-  onLinuxIt('#getRawValue with #pause', async () => {
+  itOnLinuxOrBrowser('#getRawValue with #pause', async () => {
     et.start()
     await sleep(10)
     et.pause()
@@ -121,7 +126,7 @@ describe('ElapsedTime', () => {
     expect(::et.getValue).to.throw(Error)
   })
 
-  onLinuxIt('#getValue', async () => {
+  itOnLinuxOrBrowser('#getValue', async () => {
     et.start()
     await sleep(10)
     let value = et.getValue()
@@ -129,7 +134,7 @@ describe('ElapsedTime', () => {
     expect(value.slice(-2)).to.equal('ns')
   })
 
-  onLinuxIt('#getValue with #pause', async () => {
+  itOnLinuxOrBrowser('#getValue with #pause', async () => {
     et.start()
     await sleep(10)
     et.pause()
