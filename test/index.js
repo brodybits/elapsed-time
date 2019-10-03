@@ -101,7 +101,7 @@ describe('ElapsedTime', () => {
   })
 
   it('#getRawValue without #start generate Error', () => {
-    expect(::et.getRawValue).to.throw(Error)
+    expect(et.getRawValue).to.throw(Error)
   })
 
   itOnLinuxOrBrowser('#getRawValue', async () => {
@@ -123,7 +123,7 @@ describe('ElapsedTime', () => {
   })
 
   it('#getValue without #start generate Error', () => {
-    expect(::et.getValue).to.throw(Error)
+    expect(et.getValue).to.throw(Error)
   })
 
   itOnLinuxOrBrowser('#getValue', async () => {
