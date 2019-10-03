@@ -6,12 +6,12 @@ matrix:
       env: TEST_SUITE=lint
     - node_js: 10
       env: TEST_SUITE=coveralls
-    # FUTURE TBD KNOWN TEST FAILURES on other os:
+    - node_js: 10
+      env: TEST_SUITE=test:node
+      os: windows
+    # FUTURE TBD KNOWN TEST FAILURES on macOS ("osx"):
     # - node_js: 10
     #   env: TEST_SUITE=test:node
-    #   os: windows
-    # - ...
-    #   ...
     #   os: osx
     - node_js: 0.12 # DEPRECATED
       env: TEST_SUITE=test:node
