@@ -117,7 +117,7 @@ export default class ElapsedTime {
    */
   sleep (timeout) {
     this.pause()
-    setTimeout(::this.resume, timeout)
+    setTimeout(this.resume, timeout)
 
     return this
   }
