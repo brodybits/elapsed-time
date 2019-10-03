@@ -49,7 +49,6 @@
   "devDependencies": {
     "babel": "^5.8.21",
     "babel-core": "^5.8.23",
-    "babel-eslint": "^4.1.0",
     "babelify": "^6.2.0",
     "chai": "^3.2.0",
     "coveralls": "^2.11.4",
