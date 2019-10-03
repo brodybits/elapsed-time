@@ -7,7 +7,7 @@ function sleep (timeout) {
 }
 
 const onLinuxIt = (
-  (process.platform == 'linux')
+  (process.platform === 'linux')
     ? it
     : it.skip
 )
