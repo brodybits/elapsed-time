@@ -58,18 +58,18 @@ describe('ElapsedTime', () => {
 
   it('#resume & #getRawValue', async () => {
     et.start()
-    await sleep(10)
+    await sleep(20)
     et.pause()
-    await sleep(10)
+    await sleep(20)
     et.resume()
-    await sleep(10)
-    expect(et.getRawValue()).to.be.within(19 * 1e6, 28 * 1e6)
+    await sleep(20)
+    expect(et.getRawValue()).to.be.within(39 * 1e6, 58 * 1e6)
   })
 
   it('#sleep & #getRawValue', async () => {
     et.start().sleep(10)
     await sleep(12)
-    expect(et.getRawValue()).to.be.within(0, 4 * 1e6)
+    expect(et.getRawValue()).to.be.within(0, 5 * 1e6)
   })
 
   it('#sleep without #start generate Error', () => {
@@ -105,7 +105,7 @@ describe('ElapsedTime', () => {
     await sleep(10)
     et.pause()
     let value = et.getRawValue()
-    expect(value).to.be.within(9 * 1e6, 14 * 1e6)
+    expect(value).to.be.within(9 * 1e6, 15 * 1e6)
     await sleep(10)
     expect(et.getRawValue()).to.equal(value)
   })
