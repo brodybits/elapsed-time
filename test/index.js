@@ -6,6 +6,12 @@ function sleep (timeout) {
   return new Promise((resolve) => { setTimeout(resolve, timeout) })
 }
 
+const onLinuxIt = (
+  (process.platform == 'linux')
+    ? it
+    : it.skip
+)
+
 describe('ElapsedTime', () => {
   let et
 
@@ -56,7 +62,7 @@ describe('ElapsedTime', () => {
     expect(::et.resume).to.throw(Error)
   })
 
-  it('#resume & #getRawValue', async () => {
+  onLinuxIt('#resume & #getRawValue', async () => {
     et.start()
     await sleep(10)
     et.pause()
@@ -66,7 +72,7 @@ describe('ElapsedTime', () => {
     expect(et.getRawValue()).to.be.within(19 * 1e6, 28 * 1e6)
   })
 
-  it('#sleep & #getRawValue', async () => {
+  onLinuxIt('#sleep & #getRawValue', async () => {
     et.start().sleep(10)
     await sleep(12)
     expect(et.getRawValue()).to.be.within(0, 4 * 1e6)
@@ -92,7 +98,7 @@ describe('ElapsedTime', () => {
     expect(::et.getRawValue).to.throw(Error)
   })
 
-  it('#getRawValue', async () => {
+  onLinuxIt('#getRawValue', async () => {
     et.start()
     await sleep(10)
     expect(et.getRawValue()).to.be.within(9 * 1e6, 14 * 1e6)
@@ -100,7 +106,7 @@ describe('ElapsedTime', () => {
     expect(et.getRawValue()).to.be.within(19 * 1e6, 26 * 1e6)
   })
 
-  it('#getRawValue with #pause', async () => {
+  onLinuxIt('#getRawValue with #pause', async () => {
     et.start()
     await sleep(10)
     et.pause()
@@ -114,7 +120,7 @@ describe('ElapsedTime', () => {
     expect(::et.getValue).to.throw(Error)
   })
 
-  it('#getValue', async () => {
+  onLinuxIt('#getValue', async () => {
     et.start()
     await sleep(10)
     let value = et.getValue()
@@ -122,7 +128,7 @@ describe('ElapsedTime', () => {
     expect(value.slice(-2)).to.equal('ns')
   })
 
-  it('#getValue with #pause', async () => {
+  onLinuxIt('#getValue with #pause', async () => {
     et.start()
     await sleep(10)
     et.pause()
