@@ -23,25 +23,25 @@ matrix:
       os: windows
     - node_js: 8
       env: TEST_SUITE=test:node:nobabel
-      os: mac
+      os: osx
     - node_js: 10
       env: TEST_SUITE=test:node:nobabel
       os: windows
     - node_js: 10
       env: TEST_SUITE=test:node:nobabel
-      os: mac
+      os: osx
     - node_js: 8
       env: TEST_SUITE=test:node
       os: windows
     - node_js: 8
       env: TEST_SUITE=test:node
-      os: mac
+      os: osx
     - node_js: 10
       env: TEST_SUITE=test:node
       os: windows
     - node_js: 10
       env: TEST_SUITE=test:node
-      os: mac
+      os: osx
     - node_js: 8
       env: TEST_SUITE=test:node
     - node_js: 10
