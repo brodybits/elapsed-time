@@ -32,7 +32,7 @@
   },
   "scripts": {
     "prepublish": "npm run clean && npm run compile",
-    "clean": "rm -f lib/*",
+    "clean": "rimraf coverage lib",
     "compile": "mkdir -p lib && babel src -d lib --optional runtime -s true",
     "coverage": "istanbul cover _mocha -- --compilers js:babel/register test/*.js",
     "coveralls": "npm run coverage && coveralls <coverage/lcov.info",
@@ -63,7 +63,8 @@
     "karma-detect-browsers": "^2.0.1",
     "karma-firefox-launcher": "^0.1.6",
     "karma-mocha": "^0.2.0",
-    "mocha": "^2.2.5"
+    "mocha": "^2.2.5",
+    "rimraf": "^3.0.0"
   },
   "browser": {
     "./lib/hrtime.js": "./lib/hrtime-browser.js",
