@@ -1,1 +1,2 @@
-export default process.hrtime
+// export default process.hrtime
+module.exports = process.hrtime
