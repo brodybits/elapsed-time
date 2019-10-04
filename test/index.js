@@ -1,6 +1,8 @@
-import { expect } from 'chai'
+// import { expect } from 'chai'
+const { expect } = require('chai')
 
-import ElapsedTime from '../src'
+// import ElapsedTime from '../src'
+const ElapsedTime = require('../src')
 
 function sleep (timeout) {
   return new Promise((resolve) => { setTimeout(resolve, timeout) })
