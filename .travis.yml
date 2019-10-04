@@ -18,6 +18,12 @@ matrix:
       env: TEST_SUITE=test:node:nobabel
     - node_js: 12
       env: TEST_SUITE=test:node:nobabel
+    - node_js: 8
+      env: TEST_SUITE=test:node
+    - node_js: 10
+      env: TEST_SUITE=test:node
+    - node_js: 12
+      env: TEST_SUITE=test:node
 
 install:
   - npm install
