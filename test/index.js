@@ -1,6 +1,8 @@
-import { expect } from 'chai'
+// import { expect } from 'chai'
+const { expect } = require('chai')
 
-import ElapsedTime from '../src'
+// import ElapsedTime from '../src'
+const ElapsedTime = require('../src')
 
 function sleep (timeout) {
   return new Promise((resolve) => { setTimeout(resolve, timeout) })
@@ -47,25 +49,25 @@ describe('ElapsedTime', () => {
 
   it('#start called twice generate Error', () => {
     et.start()
-    expect(::et.start).to.throw(Error)
+    expect(et.start).to.throw(Error)
   })
 
   it('#pause without #start generate Error', () => {
-    expect(::et.pause).to.throw(Error)
+    expect(et.pause).to.throw(Error)
   })
 
   it('#pause called twice generate Error', () => {
     et.start().pause()
-    expect(::et.pause).to.throw(Error)
+    expect(et.pause).to.throw(Error)
   })
 
   it('#resume without #start generate Error', () => {
-    expect(::et.resume).to.throw(Error)
+    expect(et.resume).to.throw(Error)
   })
 
   it('#resume without #pause generate Error', () => {
     et.start()
-    expect(::et.resume).to.throw(Error)
+    expect(et.resume).to.throw(Error)
   })
 
   itOnLinux('#resume & #getRawValue', async () => {
@@ -101,7 +103,7 @@ describe('ElapsedTime', () => {
   })
 
   it('#getRawValue without #start generate Error', () => {
-    expect(::et.getRawValue).to.throw(Error)
+    expect(et.getRawValue).to.throw(Error)
   })
 
   itOnLinuxOrBrowser('#getRawValue', async () => {
@@ -123,7 +125,7 @@ describe('ElapsedTime', () => {
   })
 
   it('#getValue without #start generate Error', () => {
-    expect(::et.getValue).to.throw(Error)
+    expect(et.getValue).to.throw(Error)
   })
 
   itOnLinuxOrBrowser('#getValue', async () => {

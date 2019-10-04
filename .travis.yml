@@ -11,11 +11,23 @@ matrix:
     - node_js: 10
       env: TEST_SUITE=coveralls
     - node_js: 8
-      env: TEST_SUITE=test:node
+      env: TEST_SUITE=test:nobabel
       os: windows
     - node_js: 8
-      env: TEST_SUITE=test:node
+      env: TEST_SUITE=test:nobabel
       os: osx
+    - node_js: 0.12
+      env: TEST_SUITE=test:nobabel
+    - node_js: 4
+      env: TEST_SUITE=test:nobabel
+    - node_js: 6
+      env: TEST_SUITE=test:nobabel
+    - node_js: 8
+      env: TEST_SUITE=test:nobabel
+    - node_js: 10
+      env: TEST_SUITE=test:nobabel
+    - node_js: 12
+      env: TEST_SUITE=test:nobabel
     - node_js: 0.12 # DEPRECATED
       env: TEST_SUITE=test:node
     - node_js: 4 # DEPRECATED

@@ -40,6 +40,7 @@
     "test": "npm run test:node && npm run test:browser",
     "test:browser": "karma start karma.conf.js",
     "test:node": "mocha --compilers js:babel/register --reporter spec test/*.js",
+    "test:nobabel": "mocha --reporter spec test/*.js",
     "watch:src": "babel src -d lib --optional runtime -s true -w"
   },
   "dependencies": {
