@@ -18,6 +18,16 @@ matrix:
       env: TEST_SUITE=test:node
     - node_js: 12
       env: TEST_SUITE=test:node
+    # FUTURE TBD SKIP TESTING on Windows & macOS ("osx"),
+    # due to known test failures
+    # ...
+    # - node_js: 10
+    #   env: TEST_SUITE=test:node
+    #   os: windows
+    # - node_js: 10
+    #   env: TEST_SUITE=test:node
+    #   os: osx
+    # ...
 
 install:
   - npm install
