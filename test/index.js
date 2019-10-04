@@ -23,12 +23,12 @@ describe('ElapsedTime', () => {
   })
 
   it('static #new should pass arguments to ElapsedTime constructor', () => {
-    et = ElapsedTime.new({formatter: () => { return 'h1' }}).start()
+    et = ElapsedTime.new({ formatter: () => { return 'h1' } }).start()
     expect(et.getValue()).to.equal('h1')
   })
 
   it('static #setDefaultFormatter', () => {
-    et = ElapsedTime.new({formatter: () => { return 'h1' }}).start()
+    et = ElapsedTime.new({ formatter: () => { return 'h1' } }).start()
     expect(et.getValue()).to.equal('h1')
     ElapsedTime.setDefaultFormatter(() => { return 'h1' })
     et = ElapsedTime.new().start()
@@ -106,7 +106,7 @@ describe('ElapsedTime', () => {
     et.start()
     await sleep(10)
     et.pause()
-    let value = et.getRawValue()
+    const value = et.getRawValue()
     expect(value).to.be.within(9 * 1e6, 14 * 1e6)
     await sleep(10)
     expect(et.getRawValue()).to.equal(value)
@@ -119,7 +119,7 @@ describe('ElapsedTime', () => {
   it('#getValue', async () => {
     et.start()
     await sleep(10)
-    let value = et.getValue()
+    const value = et.getValue()
     expect(parseInt(value.slice(0, -2), 10)).to.be.within(9 * 1e6, 14 * 1e6)
     expect(value.slice(-2)).to.equal('ns')
   })
@@ -128,14 +128,14 @@ describe('ElapsedTime', () => {
     et.start()
     await sleep(10)
     et.pause()
-    let value = et.getValue()
+    const value = et.getValue()
     expect(parseInt(value.slice(0, -2), 10)).to.be.within(9 * 1e6, 14 * 1e6)
     expect(value.slice(-2)).to.equal('ns')
     expect(et.getValue()).to.equal(value)
   })
 
   it('#getValue with custom formatter', () => {
-    let value = et.start().getValue({formatter: () => { return 'h1' }})
+    const value = et.start().getValue({ formatter: () => { return 'h1' } })
     expect(value).to.equal('h1')
   })
 })

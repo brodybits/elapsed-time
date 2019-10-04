@@ -78,7 +78,7 @@ class ElapsedTime {
       throw new Error('ElapsedTime already paused, please call `resume` first!')
     }
 
-    let [seconds, nanoseconds] = hrtime(this._prevTime)
+    const [seconds, nanoseconds] = hrtime(this._prevTime)
 
     this._prevTime = null
     this._savedTime = seconds * 1e9 + nanoseconds
@@ -148,7 +148,7 @@ class ElapsedTime {
       return this._savedTime
     }
 
-    let [seconds, nanoseconds] = hrtime(this._prevTime)
+    const [seconds, nanoseconds] = hrtime(this._prevTime)
     return seconds * 1e9 + nanoseconds
   }
 
