@@ -1,10 +1,25 @@
 language: node_js
-node_js:
-  - "0.10"
-  - "0.12"
+
+matrix:
+  include:
+    - node_js: 10
+      env: TEST_SUITE=lint
+    - node_js: 10
+      env: TEST_SUITE=coveralls
+    - node_js: 0.12 # DEPRECATED
+      env: TEST_SUITE=test:node
+    - node_js: 4 # DEPRECATED
+      env: TEST_SUITE=test:node
+    - node_js: 6 # DEPRECATED
+      env: TEST_SUITE=test:node
+    - node_js: 8
+      env: TEST_SUITE=test:node
+    - node_js: 10
+      env: TEST_SUITE=test:node
+    - node_js: 12
+      env: TEST_SUITE=test:node
+
 install:
   - npm install
-env:
-  - TEST_SUITE=coveralls
-  - TEST_SUITE=lint
+
 script: "npm run $TEST_SUITE"
