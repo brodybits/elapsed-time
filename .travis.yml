@@ -16,10 +16,10 @@ matrix:
     - node_js: 8
       env: TEST_SUITE=test:node
       os: osx
-    - node_js: 0.12 # DEPRECATED
-      env: TEST_SUITE=test:node
-    - node_js: 4 # DEPRECATED
-      env: TEST_SUITE=test:node
+    # - node_js: 0.12 # DEPRECATED
+    #   env: TEST_SUITE=test:node
+    # - node_js: 4 # DEPRECATED
+    #   env: TEST_SUITE=test:node
     - node_js: 6 # DEPRECATED
       env: TEST_SUITE=test:node
     - node_js: 8
