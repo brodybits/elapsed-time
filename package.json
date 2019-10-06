@@ -38,6 +38,7 @@
     "coveralls": "npm run coverage && coveralls <coverage/lcov.info",
     "lint": "eslint src test",
     "test": "npm run test:node && npm run test:browser",
+    "test:babel": "mocha --compilers js:babel/register test/*.js",
     "test:browser": "karma start karma.conf.js",
     "test:node": "istanbul test mocha -- --compilers js:babel/register --reporter spec test/*.js",
     "watch:src": "mkdir -p lib && babel src -d lib --optional runtime -s true -w"
