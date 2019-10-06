@@ -26,9 +26,9 @@ module.exports = function (config) {
       enabled: true,
       usePhantomJS: false,
       postDetection: function (availableBrowser) {
-        if (process.env.TRAVIS) {
-          return ['Firefox']
-        }
+        // if (process.env.TRAVIS) {
+        //   return ['Firefox']
+        // }
 
         var browsers = ['Chrome', 'Firefox']
         return browsers.filter(function (browser) {
