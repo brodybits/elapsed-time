@@ -2,13 +2,15 @@ language: node_js
 
 matrix:
   include:
-
+    # lint
     - node_js: 10
       env: TEST_SUITE=lint
 
+    # coverage
     - node_js: 10
       env: TEST_SUITE=coveralls
 
+    # test suite on Node.js only
     - node_js: 0.12 # DEPRECATED
       env: TEST_SUITE=test:node
     - node_js: 4 # DEPRECATED
