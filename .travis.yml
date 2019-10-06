@@ -2,12 +2,12 @@ language: node_js
 
 matrix:
   include:
-    - node_js: 0.12 # DEPRECATED
-      env: TEST_SUITE=lint
-    - node_js: 8 # EOL December 2019
-      env: TEST_SUITE=lint
-    - node_js: 10
-      env: TEST_SUITE=lint
+    # - node_js: 0.12 # DEPRECATED
+    #   env: TEST_SUITE=lint
+    # - node_js: 8 # EOL December 2019
+    #   env: TEST_SUITE=lint
+    # - node_js: 10
+    #   env: TEST_SUITE=lint
     - node_js: 10
       env: TEST_SUITE=coveralls
     - node_js: 8
