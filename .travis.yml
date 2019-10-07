@@ -60,12 +60,6 @@ matrix:
     # dist - full test, with help from headless Chrome browser
     - node_js: 0.12 # DEPRECATED
       env: TEST_SUITE=dist
-    - node_js: 4 # DEPRECATED
-      env: TEST_SUITE=dist
-    - node_js: 6 # DEPRECATED
-      env: TEST_SUITE=dist
-    - node_js: 8 # EOL December 2019
-      env: TEST_SUITE=dist
     - node_js: 10
       env: TEST_SUITE=dist
     - node_js: 12
