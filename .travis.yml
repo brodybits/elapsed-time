@@ -1,10 +1,43 @@
 language: node_js
-node_js:
-  - "0.10"
-  - "0.12"
+
+matrix:
+  include:
+    # lint
+    - node_js: 8 # EOL December 2019
+      env: TEST_SUITE=lint
+    - node_js: 10
+      env: TEST_SUITE=lint
+
+    # coverage
+    - node_js: 10
+      env: TEST_SUITE=coveralls
+
+    # test suite on Node.js only
+    - node_js: 0.12 # DEPRECATED
+      env: TEST_SUITE=test:node
+    - node_js: 4 # DEPRECATED
+      env: TEST_SUITE=test:node
+    - node_js: 6 # DEPRECATED
+      env: TEST_SUITE=test:node
+    - node_js: 8 # EOL December 2019
+      env: TEST_SUITE=test:node
+    - node_js: 10
+      env: TEST_SUITE=test:node
+    - node_js: 12
+      env: TEST_SUITE=test:node
+    # TBD SKIP TESTING on Windows & macOS ("osx") for now,
+    # due to some known test failures
+    # ...
+    # - node_js: ...
+    #   env: TEST_SUITE=test:node
+    #   os: windows
+    # - node_js: ...
+    #   env: TEST_SUITE=test:node
+    #   os: osx
+    # ...
+
 install:
   - npm install
-env:
-  - TEST_SUITE=coveralls
-  - TEST_SUITE=lint
-script: "npm run $TEST_SUITE"
+
+script:
+  - npm run $TEST_SUITE
