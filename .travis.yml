@@ -14,17 +14,13 @@ matrix:
 
     # test suite on headless Chrome browser
     - node_js: 6 # DEPRECATED
-      env:
-        - TEST_SUITE=test:browser
+      env: TEST_SUITE=test:browser
     - node_js: 8 # EOL December 2019
-      env:
-        - TEST_SUITE=test:browser
+      env: TEST_SUITE=test:browser
     - node_js: 10
-      env:
-        - TEST_SUITE=test:browser
+      env: TEST_SUITE=test:browser
     - node_js: 12
-      env:
-        - TEST_SUITE=test:browser
+      env: TEST_SUITE=test:browser
 
     # test suite on Node.js only
     - node_js: 0.12 # DEPRECATED
