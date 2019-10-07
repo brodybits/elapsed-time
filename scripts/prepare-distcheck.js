@@ -13,7 +13,7 @@ const DISTCHECK_NODE_ROOT = `${DISTCHECK_ROOT}/node`
 // I/O wrapper functions with logging:
 
 const commandSync = (c, o) => {
-  console.log(`* in ${o.cwd} execute command: ${c}`)
+  console.log(`* in ${o.cwd || process.cwd()} execute command: ${c}`)
   // FUTURE TBD change to use `commandSync` from `execa`
   // (once we drop support for some extra-old Node.js versions)
   childProc.execSync(c, o)
