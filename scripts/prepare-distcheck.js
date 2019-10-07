@@ -52,7 +52,8 @@ const copyFileSync = (src, dest) => {
   // workaround for missing `copyFileSync` on extra-old Node.js versions
   // fs.copyFileSync(src, dest)
   commandSync(
-    `cp ${src} ${dest}`,
+    // `cp ${src} ${dest}`,
+    ['cp', src, dest].join(' '),
     { stdio: 'inherit' })
 }
 
