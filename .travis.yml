@@ -15,6 +15,8 @@ matrix:
     # test suite on headless Chrome browser only
     - node_js: 10
       env: TEST_SUITE=test:browser
+    - node_js: 12
+      env: TEST_SUITE=test:browser
     - node_js: 10
       env: TEST_SUITE=test:browser
       os: windows
