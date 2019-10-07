@@ -48,6 +48,9 @@ matrix:
     - node_js: 4 # DEPRECATED
       env: TEST_SUITE=test:node:skipasync
       os: windows
+    - node_js: 4 # DEPRECATED
+      env: TEST_SUITE=test:node:skipasync
+      os: osx # macOS
     - node_js: 10
       env: TEST_SUITE=test:node:skipasync
       os: windows
@@ -57,6 +60,9 @@ matrix:
     - node_js: 12
       env: TEST_SUITE=test:node:skipasync
       os: windows
+    - node_js: 12
+      env: TEST_SUITE=test:node:skipasync
+      os: osx # macOS
 
     # distcheck:test:browser
     - node_js: 10
