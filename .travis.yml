@@ -12,6 +12,28 @@ matrix:
     - node_js: 10
       env: TEST_SUITE=coveralls
 
+    # test suite on headless Chrome browser
+    - node_js: 10
+      env:
+        - TEST_SUITE=test:browser
+          TEST_BROWSER_CHROME_HEADLESS=1
+      script:
+        # NOTE: As commented in karma.conf.js,
+        # manual installation of puppeteer@1
+        # is required in order to avoid breaking
+        # Travis CI on DEPRECATED Node.js 0.12 & 4.
+        - npm i --save-dev puppeteer@1 && npm run $TEST_SUITE
+    - node_js: 12
+      env:
+        - TEST_SUITE=test:browser
+          TEST_BROWSER_CHROME_HEADLESS=1
+      script:
+        # NOTE (repeated): As commented in karma.conf.js,
+        # manual installation of puppeteer@1
+        # is required in order to avoid breaking
+        # Travis CI on DEPRECATED Node.js 0.12 & 4.
+        - npm i --save-dev puppeteer@1 && npm run $TEST_SUITE
+
     # test suite on Node.js only
     - node_js: 0.12 # DEPRECATED
       env: TEST_SUITE=test:node

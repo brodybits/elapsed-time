@@ -26,6 +26,15 @@ module.exports = function (config) {
       enabled: true,
       usePhantomJS: false,
       postDetection: function (availableBrowser) {
+        // NOTE: At this point, puppeteer@1 must be installed *manually*
+        // (`npm i --save-dev puppeteer@1`)
+        // before testing with `ChromeHeadless`.
+        // Rationale is to avoid breaking Travis CI testing on
+        // DEPRECATED Node.js versions 0.12 & 4.
+        if (process.env.TEST_BROWSER_CHROME_HEADLESS) {
+          return ['ChromeHeadless']
+        }
+
         var browsers = ['Chrome', 'Firefox']
         return browsers.filter(function (browser) {
           return availableBrowser.indexOf(browser) !== -1
