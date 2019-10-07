@@ -19,22 +19,20 @@ function commandSync (c, o) {
   console.log('  command: ' + c)
 
   // FUTURE TBD change to use `commandSync` from `execa`
-  // in case support for some extra-old Node.js versions is removed
+  // in case support for extra-old Node.js versions is removed
   childProc.execSync(c, o)
 }
 
-// XXX FUTURE TBD XXX
+// FUTURE TBD switch to `ensureDirSync` as supported by `fs-extra`
+// in case support for extra-old Node.js versions is removed
 function mkdirSync (dir) {
   console.log('* create directory: ' + dir)
 
-  // XXX TBD XXX
-  // FUTURE TBD use `ensureDirSync` from `fs-extra`
-  // in case support for some extra-old Node.js versions is removed
   fs.mkdirSync(dir)
 }
 
 // FUTURE TBD simply use `copySync` from `fs-extra`
-// in case support for some extra-old Node.js versions is removed
+// in case support for extra-old Node.js versions is removed
 
 function copyDirSync (src, dest) {
   console.log('* copy artifacts directory')
@@ -50,9 +48,7 @@ function copyFileSync (src, dest) {
   console.log('  to dest: ' + dest)
 
   // workaround for missing `copyFileSync` on extra-old Node.js versions
-  // fs.copyFileSync(src, dest)
   commandSync(
-    // `cp ${src} ${dest}`,
     ['cp', src, dest].join(' '),
     { stdio: 'inherit' })
 }
@@ -60,7 +56,8 @@ function copyFileSync (src, dest) {
 // This step is done by calling rimraf in `distcheck:prepare` script:
 // removeSync(DISTCHECK_ROOT)
 
-// Separate step as a workaround since `recursive` option is not supported on
+// Separate `mkdirSync` step as a workaround since
+// `recursive` option is not supported on
 // some old Node.js versions:
 mkdirSync(DISTCHECK_ROOT)
 
