@@ -52,6 +52,7 @@
     "babel-eslint": "^4.1.0",
     "babelify": "^6.2.0",
     "chai": "^3.2.0",
+    "copy-dir": "^1.2.0",
     "coveralls": "^2.11.4",
     "eslint": "^1.2.1",
     "eslint-config-standard": "^4.1.0",
