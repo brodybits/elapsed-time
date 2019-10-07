@@ -79,8 +79,10 @@ matrix:
       env: TEST_SUITE=distcheck:test:node
       script:
         - npm run compile && npm run distcheck:prepare && npm run $TEST_SUITE
-    # SKIP on Node.js 0.12 since it cannot run `scripts/prepare-distcheck.js`
-    # with the backticks
+    - node_js: 0.12 # DEPRECATED
+      env: TEST_SUITE=distcheck:test:node
+      script:
+        - npm run compile && npm run distcheck:prepare && npm run $TEST_SUITE
 
 install:
   - npm install
