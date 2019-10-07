@@ -17,10 +17,10 @@ matrix:
       env: TEST_SUITE=test:browser
     - node_js: 12
       env: TEST_SUITE=test:browser
-    - node_js: 10
+    - node_js: 12
       env: TEST_SUITE=test:browser
       os: windows
-    - node_js: 10
+    - node_js: 12
       env: TEST_SUITE=test:browser
       os: osx # macOS
 
