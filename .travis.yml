@@ -15,6 +15,12 @@ matrix:
     # test suite on headless Chrome browser only
     - node_js: 10
       env: TEST_SUITE=test:browser
+    - node_js: 10
+      env: TEST_SUITE=test:browser
+      os: windows
+    - node_js: 10
+      env: TEST_SUITE=test:browser
+      os: osx # macOS
 
     # test suite on Node.js only
     - node_js: 10
