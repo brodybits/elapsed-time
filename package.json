@@ -32,8 +32,8 @@
   },
   "scripts": {
     "prepublish": "npm run clean && npm run compile",
-    "clean": "rimraf coverage distcheck lib",
-    "compile": "babel src -d lib --optional runtime -s true",
+    "clean": "rm -f lib/*",
+    "compile": "mkdir -p lib && babel src -d lib --optional runtime -s true",
     "coverage": "istanbul cover _mocha -- --compilers js:babel/register test/*.js",
     "coveralls": "npm run coverage && coveralls <coverage/lcov.info",
     "dist": "npm run clean && npm run compile && npm run distcheck",
@@ -45,8 +45,8 @@
     "lint": "eslint scripts src test",
     "test": "npm run test:node && npm run test:browser",
     "test:browser": "karma start karma.conf.js",
-    "test:node": "mocha --compilers js:babel/register test/*.js",
-    "watch:src": "babel src -d lib --optional runtime -s true -w"
+    "test:node": "istanbul test mocha -- --compilers js:babel/register --reporter spec test/*.js",
+    "watch:src": "mkdir -p lib && babel src -d lib --optional runtime -s true -w"
   },
   "dependencies": {
     "babel-runtime": "^5.8.20",
