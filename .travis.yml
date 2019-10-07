@@ -45,6 +45,12 @@ matrix:
     #   os: osx
     # ...
 
+    # distcheck:test:browser
+    - node_js: 10
+      env: TEST_SUITE=distcheck:test:browser
+      script:
+        - npm run compile && npm run distcheck:prepare && npm run $TEST_SUITE
+
     # distcheck:test:node
     - node_js: 10
       env: TEST_SUITE=distcheck:test:node
