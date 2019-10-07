@@ -90,7 +90,7 @@ matrix:
         # Travis CI on DEPRECATED Node.js 0.12 & 4.
         - npm i --save-dev puppeteer@1 && npm run $TEST_SUITE
 
-    # xxxxx
+    # distcheck:test:node
     - node_js: 10
       env: TEST_SUITE=distcheck:test:node
       script:
