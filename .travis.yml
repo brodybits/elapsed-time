@@ -58,6 +58,24 @@ matrix:
     #   os: osx
     # ...
 
+    # dist - full test, with help from headless Chrome browser
+    - node_js: 10
+      env:
+        - TEST_SUITE=dist
+          TEST_BROWSER_CHROME_HEADLESS=1
+      script:
+        # NOTE: As commented in karma.conf.js,
+        # manual installation of puppeteer@1
+        # is required in order to avoid breaking
+        # Travis CI on DEPRECATED Node.js 0.12 & 4.
+        - npm i --save-dev puppeteer@1 && npm run $TEST_SUITE
+
+    # xxxxx
+    - node_js: 4 # DEPRECATED
+      env: TEST_SUITE=distcheck:test:node
+      script:
+        - npm run compile && npm run distcheck:prepare && npm run $TEST_SUITE
+
 install:
   - npm install
 
