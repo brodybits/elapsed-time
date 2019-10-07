@@ -12,11 +12,13 @@ const DISTCHECK_NODE_ROOT = `${DISTCHECK_ROOT}/node`
 
 // I/O wrapper functions with logging:
 
-const ensureDirSync = (dir) => {
+// XXX FUTURE TBD XXX
+const mkdirSync = (dir) => {
   console.log(`* create directory ${dir}`)
+  // XXX TBD XXX
   // FUTURE TBD use `ensureDirSync` from `fs-extra`
   // (once we drop support for some extra-old Node.js versions)
-  fs.mkdirSync(dir, { recursive: true })
+  fs.mkdirSync(dir)
 }
 
 // FUTURE TBD simply use `copySync` from `fs-extra`
@@ -42,7 +44,11 @@ const commandSync = (c, o) => {
 // This step is done by calling rimraf in `distcheck:prepare` script:
 // removeSync(DISTCHECK_ROOT)
 
-ensureDirSync(DISTCHECK_BROWSER_ROOT)
+// Separate step needed since `recursive` option is not supported on
+// some old Node.js versions:
+mkdirSync(DISTCHECK_ROOT)
+
+mkdirSync(DISTCHECK_BROWSER_ROOT)
 
 copyDirSync('lib', `${DISTCHECK_BROWSER_ROOT}/src`)
 copyFileSync('lib/hrtime-browser.js', `${DISTCHECK_BROWSER_ROOT}/src/hrtime.js`)
@@ -64,6 +70,6 @@ commandSync(`npm install babel-core@${require('../package.json').devDependencies
   stdio: 'inherit'
 })
 
-ensureDirSync(DISTCHECK_NODE_ROOT)
+mkdirSync(DISTCHECK_NODE_ROOT)
 copyDirSync('lib', `${DISTCHECK_NODE_ROOT}/src`)
 copyDirSync('test', `${DISTCHECK_NODE_ROOT}/test`)
