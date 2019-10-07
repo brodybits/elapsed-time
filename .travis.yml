@@ -13,6 +13,10 @@ matrix:
       env: TEST_SUITE=coveralls
 
     # test suite on headless Chrome browser
+    - node_js: 0.12 # DEPRECATED
+      env: TEST_SUITE=test:browser
+    - node_js: 4 # DEPRECATED
+      env: TEST_SUITE=test:browser
     - node_js: 6 # DEPRECATED
       env: TEST_SUITE=test:browser
     - node_js: 8 # EOL December 2019
