@@ -1,6 +1,7 @@
 module.exports = function (config) {
   config.set({
-    frameworks: ['browserify', 'detectBrowsers', 'mocha'],
+    browsers: ['ChromeHeadless'],
+    frameworks: ['browserify', 'mocha'],
     files: [
       'node_modules/babel-core/browser-polyfill.js',
       'test/*.js'
@@ -12,8 +13,6 @@ module.exports = function (config) {
     plugins: [
       'karma-browserify',
       'karma-chrome-launcher',
-      'karma-firefox-launcher',
-      'karma-detect-browsers',
       'karma-mocha'
     ],
     browserify: {
@@ -21,13 +20,6 @@ module.exports = function (config) {
       transform: [
         ['babelify']
       ]
-    },
-    detectBrowsers: {
-      enabled: true,
-      usePhantomJS: false,
-      postDetection: function (availableBrowser) {
-        return ['ChromeHeadless']
-      }
     }
   })
 }
