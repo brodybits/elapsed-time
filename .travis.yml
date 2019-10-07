@@ -3,7 +3,7 @@ language: node_js
 matrix:
   include:
     # lint
-    - node_js: 8 # MAINTENANCE until December 2019
+    - node_js: 8 # EOL December 2019
       env: TEST_SUITE=lint
     - node_js: 10
       env: TEST_SUITE=lint
@@ -41,7 +41,7 @@ matrix:
       env: TEST_SUITE=test:node
     - node_js: 6 # DEPRECATED
       env: TEST_SUITE=test:node
-    - node_js: 8
+    - node_js: 8 # EOL December 2019
       env: TEST_SUITE=test:node
     - node_js: 10
       env: TEST_SUITE=test:node
