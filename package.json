@@ -38,7 +38,7 @@
     "coveralls": "npm run coverage && coveralls <coverage/lcov.info",
     "dist": "npm run clean && npm run compile && npm run distcheck",
     "distcheck": "npm run distcheck:prepare && npm run distcheck:test",
-    "distcheck:prepare": "rimraf coverage distcheck && node ./scripts/prepare-distcheck.js",
+    "distcheck:prepare": "rimraf distcheck && node ./scripts/prepare-distcheck.js",
     "distcheck:test": "npm run distcheck:test:browser && npm run distcheck:test:node",
     "distcheck:test:browser": "cd distcheck/browser && karma start karma.conf.js",
     "distcheck:test:node": "mocha --compilers js:babel/register distcheck/node/test/*.js",
