@@ -91,7 +91,19 @@ matrix:
         - npm i --save-dev puppeteer@1 && npm run $TEST_SUITE
 
     # distcheck:test:node
+    - node_js: 12
+      env: TEST_SUITE=distcheck:test:node
+      script:
+        - npm run compile && npm run distcheck:prepare && npm run $TEST_SUITE
     - node_js: 10
+      env: TEST_SUITE=distcheck:test:node
+      script:
+        - npm run compile && npm run distcheck:prepare && npm run $TEST_SUITE
+    - node_js: 8 # EOL December 2019
+      env: TEST_SUITE=distcheck:test:node
+      script:
+        - npm run compile && npm run distcheck:prepare && npm run $TEST_SUITE
+    - node_js: 6 # DEPRECATED
       env: TEST_SUITE=distcheck:test:node
       script:
         - npm run compile && npm run distcheck:prepare && npm run $TEST_SUITE
