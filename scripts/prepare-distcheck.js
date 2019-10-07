@@ -14,7 +14,7 @@ const DISTCHECK_NODE_ROOT = path.join(DISTCHECK_ROOT, 'node')
 
 // I/O wrapper functions with logging:
 
-const commandSync = (c, o) => {
+function commandSync (c, o) {
   console.log('* execure command in cwd:' + (o.cwd || process.cwd()))
   console.log('  command: ' + c)
 
@@ -24,7 +24,7 @@ const commandSync = (c, o) => {
 }
 
 // XXX FUTURE TBD XXX
-const mkdirSync = (dir) => {
+function mkdirSync (dir) {
   console.log('* create directory: ' + dir)
 
   // XXX TBD XXX
@@ -36,7 +36,7 @@ const mkdirSync = (dir) => {
 // FUTURE TBD simply use `copySync` from `fs-extra`
 // in case support for some extra-old Node.js versions is removed
 
-const copyDirSync = (src, dest) => {
+function copyDirSync (src, dest) {
   console.log('* copy artifacts directory')
   console.log('  from src: ' + src)
   console.log('  to dest: ' + dest)
@@ -44,7 +44,7 @@ const copyDirSync = (src, dest) => {
   copydir.sync(src, dest)
 }
 
-const copyFileSync = (src, dest) => {
+function copyFileSync (src, dest) {
   console.log('* copy file artifact')
   console.log('  from src: ' + src)
   console.log('  to dest: ' + dest)
