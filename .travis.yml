@@ -34,16 +34,27 @@ matrix:
     - node_js: 12
       env: TEST_SUITE=test
 
+    # test:skipasync on Node.js on Windows & macOS ("osx")
     # TBD SKIP TESTING on Windows & macOS ("osx") for now,
-    # due to some known test failures
-    # ...
-    # - node_js: 10
-    #   env: TEST_SUITE=test:node
-    #   os: windows
-    # - node_js: 10
-    #   env: TEST_SUITE=test:node
-    #   os: osx
-    # ...
+    # due to timing issues with async tests
+    - node_js: 0.12 # DEPRECATED
+      env: TEST_SUITE=test:skipasync
+      os: windows
+    - node_js: 0.12 # DEPRECATED
+      env: TEST_SUITE=test:skipasync
+      os: osx # macOS
+    - node_js: 4 # DEPRECATED
+      env: TEST_SUITE=test:skipasync
+      os: windows
+    - node_js: 10
+      env: TEST_SUITE=test:skipasync
+      os: windows
+    - node_js: 10
+      env: TEST_SUITE=test:skipasync
+      os: osx # macOS
+    - node_js: 12
+      env: TEST_SUITE=test:skipasync
+      os: windows
 
     # distcheck:test:browser
     - node_js: 10

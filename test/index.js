@@ -6,12 +6,18 @@ function sleep (timeout) {
   return new Promise((resolve) => { setTimeout(resolve, timeout) })
 }
 
-describe('ElapsedTime', () => {
+const skipAsync = !!process.env && !!process.env.TEST_SKIPASYNC
+
+const describeAsyncTests = skipAsync ? describe.skip : describe
+
+describe('ElapsedTime - part 1', () => {
   let et
 
   beforeEach(() => {
     et = new ElapsedTime({
+      /* ** TBD seems to be not needed for part 1:
       formatter: (val) => { return `${val}ns` }
+      // */
     })
   })
 
@@ -54,6 +60,17 @@ describe('ElapsedTime', () => {
   it('#resume without #pause generate Error', () => {
     et.start()
     expect(::et.resume).to.throw(Error)
+  })
+})
+
+describeAsyncTests('ElapsedTime - async timing', () => {
+  let et
+
+  beforeEach(() => {
+    et = new ElapsedTime({
+      // TBD seems to be needed on browser only:
+      formatter: (val) => { return `${val}ns` }
+    })
   })
 
   it('#resume & #getRawValue', async () => {
@@ -130,6 +147,14 @@ describe('ElapsedTime', () => {
     expect(parseInt(value.slice(0, -2), 10)).to.be.within(9 * 1e6, 14 * 1e6)
     expect(value.slice(-2)).to.equal('ns')
     expect(et.getValue()).to.equal(value)
+  })
+})
+
+describe('ElapsedTime - custom formatter', () => {
+  let et
+
+  beforeEach(() => {
+    et = new ElapsedTime()
   })
 
   it('#getValue with custom formatter', () => {
