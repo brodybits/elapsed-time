@@ -12,6 +12,13 @@ const DISTCHECK_NODE_ROOT = `${DISTCHECK_ROOT}/node`
 
 // I/O wrapper functions with logging:
 
+const commandSync = (c, o) => {
+  console.log(`* in ${o.cwd} execute command: ${c}`)
+  // FUTURE TBD change to use `commandSync` from `execa`
+  // (once we drop support for some extra-old Node.js versions)
+  childProc.execSync(c, o)
+}
+
 // XXX FUTURE TBD XXX
 const mkdirSync = (dir) => {
   console.log(`* create directory ${dir}`)
@@ -31,14 +38,10 @@ const copyDirSync = (src, dest) => {
 
 const copyFileSync = (src, dest) => {
   console.log(`* copy file artifact from ${src} to ${dest}`)
-  fs.copyFileSync(src, dest)
-}
-
-const commandSync = (c, o) => {
-  console.log(`* in ${o.cwd} execute command: ${c}`)
-  // FUTURE TBD change to use `commandSync` from `execa`
-  // (once we drop support for some extra-old Node.js versions)
-  childProc.execSync(c, o)
+  // fs.copyFileSync(src, dest)
+  commandSync(
+    `cp ${src} ${dest}`,
+    { stdio: 'inherit' })
 }
 
 // This step is done by calling rimraf in `distcheck:prepare` script:
