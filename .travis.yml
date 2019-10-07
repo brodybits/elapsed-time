@@ -46,19 +46,10 @@ matrix:
     # ...
 
     # distcheck:test:node
-    # XXX TODO:
-    # - node_js: 0.12 # DEPRECATED
-    #   ...
-    - node_js: 4 # DEPRECATED
+    - node_js: 10
       env: TEST_SUITE=distcheck:test:node
       script:
         - npm run compile && npm run distcheck:prepare && npm run $TEST_SUITE
-    - node_js: 4 # DEPRECATED
-      env: TEST_SUITE=test:node
-    # XXX TODO:
-    # - node_js: 6 # DEPRECATED
-    #   ...
-    #   ...
 
     # dist - full test, with help from headless Chrome browser
     # XXX TODO:
