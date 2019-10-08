@@ -100,7 +100,7 @@ describe('ElapsedTime', () => {
     et.start()
     await sleep(10 * SLEEP_FACTOR)
     expect(et.getRawValue()).to.be.within(9 * ET_FACTOR, 14 * ET_FACTOR)
-    await sleep(10* SLEEP_FACTOR)
+    await sleep(10 * SLEEP_FACTOR)
     expect(et.getRawValue()).to.be.within(19 * ET_FACTOR, 26 * ET_FACTOR)
   })
 
