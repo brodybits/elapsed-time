@@ -46,7 +46,7 @@
     "test": "npm run test:node && npm run test:browser",
     "test:browser": "karma start karma.conf.js",
     "test:node": "mocha --compilers js:babel/register test/*.js",
-    "test:node:skipasync": "cross-env TEST_SKIPASYNC=1 mocha --compilers js:babel/register test/*.js",
+    "test:node:skipasync": "cross-env TEST_SKIPASYNC=1 npm run test:node",
     "watch:src": "mkdir -p lib && babel src -d lib --optional runtime -s true -w"
   },
   "dependencies": {
