@@ -35,11 +35,9 @@ matrix:
       env: TEST_SUITE=test
     - node_js: 12
       env: TEST_SUITE=test
-    # TBD SKIP Node.js 12 on Windows for now, at least
-    # (seemed to be problematic, at least in the past)
-    # - node_js: 0.12 # DEPRECATED
-    #   env: TEST_SUITE=test
-    #   os: windows
+    - node_js: 0.12 # DEPRECATED
+      env: TEST_SUITE=test
+      os: windows
     - node_js: 0.12 # DEPRECATED
       env: TEST_SUITE=test
       os: osx # macOS
