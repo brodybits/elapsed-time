@@ -27,8 +27,6 @@ matrix:
     #   env: TEST_SUITE=test:browser
 
     # test suite on Node.js & headless Chrome browser
-    # TBD SKIP FULL TESTING on Windows & macOS ("osx") for now,
-    # due to timing issues with async tests
     - node_js: 0.12 # DEPRECATED
       env: TEST_SUITE=test
     - node_js: 4 # DEPRECATED
@@ -41,6 +39,33 @@ matrix:
       env: TEST_SUITE=test
     - node_js: 12
       env: TEST_SUITE=test
+
+    # test suite on Node.js only on Windows & osx (macOS)
+    # TBD issues with headless Chrome browser test on Windows & macOS
+    - node_js: 0.12 # DEPRECATED
+      env: TEST_SUITE=test:node
+      os: windows
+    - node_js: 0.12 # DEPRECATED
+      env: TEST_SUITE=test:node
+      os: osx # macOS
+    - node_js: 4 # DEPRECATED
+      env: TEST_SUITE=test:node
+      os: windows
+    - node_js: 4 # DEPRECATED
+      env: TEST_SUITE=test:node
+      os: osx # macOS
+    - node_js: 10
+      env: TEST_SUITE=test:node
+      os: windows
+    - node_js: 10
+      env: TEST_SUITE=test:node
+      os: osx # macOS
+    - node_js: 12
+      env: TEST_SUITE=test:node
+      os: windows
+    - node_js: 12
+      env: TEST_SUITE=test:node
+      os: osx # macOS
 
     # distcheck:test:browser
     - node_js: 10
@@ -63,6 +88,48 @@ matrix:
       env: TEST_SUITE=dist
     - node_js: 12
       env: TEST_SUITE=dist
+
+    # distcheck:test:node on Windows & osx (macOS)
+    - node_js: 0.12 # DEPRECATED
+      env: TEST_SUITE=distcheck:test:node
+      os: windows
+      script:
+        - npm run compile && npm run distcheck:prepare && npm run $TEST_SUITE
+    - node_js: 0.12 # DEPRECATED
+      env: TEST_SUITE=distcheck:test:node
+      os: osx # macOS
+      script:
+        - npm run compile && npm run distcheck:prepare && npm run $TEST_SUITE
+    - node_js: 4 # DEPRECATED
+      env: TEST_SUITE=distcheck:test:node
+      os: windows
+      script:
+        - npm run compile && npm run distcheck:prepare && npm run $TEST_SUITE
+    - node_js: 4 # DEPRECATED
+      env: TEST_SUITE=distcheck:test:node
+      os: osx # macOS
+      script:
+        - npm run compile && npm run distcheck:prepare && npm run $TEST_SUITE
+    - node_js: 10
+      env: TEST_SUITE=distcheck:test:node
+      os: windows
+      script:
+        - npm run compile && npm run distcheck:prepare && npm run $TEST_SUITE
+    - node_js: 10
+      env: TEST_SUITE=distcheck:test:node
+      os: osx # macOS
+      script:
+        - npm run compile && npm run distcheck:prepare && npm run $TEST_SUITE
+    - node_js: 12
+      env: TEST_SUITE=distcheck:test:node
+      os: windows
+      script:
+        - npm run compile && npm run distcheck:prepare && npm run $TEST_SUITE
+    - node_js: 12
+      env: TEST_SUITE=distcheck:test:node
+      os: osx # macOS
+      script:
+        - npm run compile && npm run distcheck:prepare && npm run $TEST_SUITE
 
 install:
   - npm install
