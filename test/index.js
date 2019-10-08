@@ -41,25 +41,25 @@ describe('ElapsedTime - part 1', () => {
 
   it('#start called twice generate Error', () => {
     et.start()
-    expect(::et.start).to.throw(Error)
+    expect(et.start).to.throw(Error)
   })
 
   it('#pause without #start generate Error', () => {
-    expect(::et.pause).to.throw(Error)
+    expect(et.pause).to.throw(Error)
   })
 
   it('#pause called twice generate Error', () => {
     et.start().pause()
-    expect(::et.pause).to.throw(Error)
+    expect(et.pause).to.throw(Error)
   })
 
   it('#resume without #start generate Error', () => {
-    expect(::et.resume).to.throw(Error)
+    expect(et.resume).to.throw(Error)
   })
 
   it('#resume without #pause generate Error', () => {
     et.start()
-    expect(::et.resume).to.throw(Error)
+    expect(et.resume).to.throw(Error)
   })
 })
 
@@ -106,7 +106,7 @@ describeAsyncTests('ElapsedTime - async timing', () => {
   })
 
   it('#getRawValue without #start generate Error', () => {
-    expect(::et.getRawValue).to.throw(Error)
+    expect(et.getRawValue).to.throw(Error)
   })
 
   it('#getRawValue', async () => {
@@ -128,7 +128,7 @@ describeAsyncTests('ElapsedTime - async timing', () => {
   })
 
   it('#getValue without #start generate Error', () => {
-    expect(::et.getValue).to.throw(Error)
+    expect(et.getValue).to.throw(Error)
   })
 
   it('#getValue', async () => {
