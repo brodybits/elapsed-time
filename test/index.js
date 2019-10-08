@@ -2,7 +2,7 @@ import { expect } from 'chai'
 
 import ElapsedTime from '../src'
 
-const SLEEP_FACTOR = 10
+const SLEEP_FACTOR = 20
 
 const ET_FACTOR = 1e6 * SLEEP_FACTOR
 
