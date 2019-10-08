@@ -1,7 +1,6 @@
 const { expect } = require('chai')
 
-// importing an ES6 module from Common JS:
-const ElapsedTime = require('../src').default
+const ElapsedTime = require('../src')
 
 function sleep (timeout) {
   return new Promise((resolve) => { setTimeout(resolve, timeout) })
