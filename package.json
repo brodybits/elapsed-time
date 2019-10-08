@@ -50,7 +50,7 @@
     "watch:src": "mkdir -p lib && babel src -d lib --optional runtime -s true -w"
   },
   "dependencies": {
-    "babel-runtime": "^5.8.20",
+    "babel-runtime": "^6.26.0",
     "browser-process-hrtime": "^1.0.0"
   },
   "devDependencies": {
