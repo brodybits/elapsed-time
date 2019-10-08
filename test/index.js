@@ -2,6 +2,11 @@ import { expect } from 'chai'
 
 import ElapsedTime from '../src'
 
+// TBD quick test factors to avoid timing issues
+// FUTURE TBD consider lower value & refactor to use more sensical names
+const X50 = 50
+const X50M = X50 * 1e6
+
 function sleep (timeout) {
   return new Promise((resolve) => { setTimeout(resolve, timeout) })
 }
@@ -58,18 +63,18 @@ describe('ElapsedTime', () => {
 
   it('#resume & #getRawValue', async () => {
     et.start()
-    await sleep(10)
+    await sleep(10 * X50)
     et.pause()
-    await sleep(10)
+    await sleep(10 * X50)
     et.resume()
-    await sleep(10)
-    expect(et.getRawValue()).to.be.within(19 * 1e6, 28 * 1e6)
+    await sleep(10 * X50)
+    expect(et.getRawValue()).to.be.within(19 * X50M, 28 * X50M)
   })
 
   it('#sleep & #getRawValue', async () => {
-    et.start().sleep(10)
-    await sleep(12)
-    expect(et.getRawValue()).to.be.within(0, 4 * 1e6)
+    et.start().sleep(10 * X50)
+    await sleep(12 * X50)
+    expect(et.getRawValue()).to.be.within(0, 4 * X50M)
   })
 
   it('#sleep without #start generate Error', () => {
@@ -83,9 +88,9 @@ describe('ElapsedTime', () => {
 
   it('#reset & #getRawValue', async () => {
     et.start()
-    await sleep(10)
+    await sleep(10 * X50)
     et.reset().start()
-    expect(et.getRawValue()).to.be.below(1 * 1e6)
+    expect(et.getRawValue()).to.be.below(1 * X50M)
   })
 
   it('#getRawValue without #start generate Error', () => {
@@ -94,19 +99,19 @@ describe('ElapsedTime', () => {
 
   it('#getRawValue', async () => {
     et.start()
-    await sleep(10)
-    expect(et.getRawValue()).to.be.within(9 * 1e6, 14 * 1e6)
-    await sleep(10)
-    expect(et.getRawValue()).to.be.within(19 * 1e6, 26 * 1e6)
+    await sleep(10 * X50)
+    expect(et.getRawValue()).to.be.within(9 * X50M, 14 * X50M)
+    await sleep(10 * X50)
+    expect(et.getRawValue()).to.be.within(19 * X50M, 26 * X50M)
   })
 
   it('#getRawValue with #pause', async () => {
     et.start()
-    await sleep(10)
+    await sleep(10 * X50)
     et.pause()
     let value = et.getRawValue()
-    expect(value).to.be.within(9 * 1e6, 14 * 1e6)
-    await sleep(10)
+    expect(value).to.be.within(9 * X50M, 14 * X50M)
+    await sleep(10 * X50)
     expect(et.getRawValue()).to.equal(value)
   })
 
@@ -116,18 +121,18 @@ describe('ElapsedTime', () => {
 
   it('#getValue', async () => {
     et.start()
-    await sleep(10)
+    await sleep(10 * X50)
     let value = et.getValue()
-    expect(parseInt(value.slice(0, -2), 10)).to.be.within(9 * 1e6, 14 * 1e6)
+    expect(parseInt(value.slice(0, -2), 10)).to.be.within(9 * X50M, 14 * X50M)
     expect(value.slice(-2)).to.equal('ns')
   })
 
   it('#getValue with #pause', async () => {
     et.start()
-    await sleep(10)
+    await sleep(10 * X50)
     et.pause()
     let value = et.getValue()
-    expect(parseInt(value.slice(0, -2), 10)).to.be.within(9 * 1e6, 14 * 1e6)
+    expect(parseInt(value.slice(0, -2), 10)).to.be.within(9 * X50M, 14 * X50M)
     expect(value.slice(-2)).to.equal('ns')
     expect(et.getValue()).to.equal(value)
   })
