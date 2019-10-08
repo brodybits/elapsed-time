@@ -2,6 +2,10 @@ import { expect } from 'chai'
 
 import ElapsedTime from '../src'
 
+const SLEEP_FACTOR = 10
+
+const ET_FACTOR = 1e6 * SLEEP_FACTOR
+
 function sleep (timeout) {
   return new Promise((resolve) => { setTimeout(resolve, timeout) })
 }
@@ -58,18 +62,18 @@ describe('ElapsedTime', () => {
 
   it('#resume & #getRawValue', async () => {
     et.start()
-    await sleep(10 * 10)
+    await sleep(10 * SLEEP_FACTOR)
     et.pause()
-    await sleep(10 * 10)
+    await sleep(10 * SLEEP_FACTOR)
     et.resume()
-    await sleep(10 * 10)
-    expect(et.getRawValue()).to.be.within(19 * 10 * 1e6, 28 * 10 * 1e6)
+    await sleep(10 * SLEEP_FACTOR)
+    expect(et.getRawValue()).to.be.within(19 * ET_FACTOR, 28 * ET_FACTOR)
   })
 
   it('#sleep & #getRawValue', async () => {
-    et.start().sleep(10 * 10)
-    await sleep(12 * 10)
-    expect(et.getRawValue()).to.be.within(0, 4 * 10 * 1e6)
+    et.start().sleep(10 * SLEEP_FACTOR)
+    await sleep(12 * SLEEP_FACTOR)
+    expect(et.getRawValue()).to.be.within(0, 4 * ET_FACTOR)
   })
 
   it('#sleep without #start generate Error', () => {
@@ -83,9 +87,9 @@ describe('ElapsedTime', () => {
 
   it('#reset & #getRawValue', async () => {
     et.start()
-    await sleep(10 * 10)
+    await sleep(10 * SLEEP_FACTOR)
     et.reset().start()
-    expect(et.getRawValue()).to.be.below(1 * 10 * 1e6)
+    expect(et.getRawValue()).to.be.below(1 * ET_FACTOR)
   })
 
   it('#getRawValue without #start generate Error', () => {
@@ -94,19 +98,19 @@ describe('ElapsedTime', () => {
 
   it('#getRawValue', async () => {
     et.start()
-    await sleep(10 * 10)
-    expect(et.getRawValue()).to.be.within(9 * 10 * 1e6, 14 * 10 * 1e6)
-    await sleep(10* 10)
-    expect(et.getRawValue()).to.be.within(19 * 10 * 1e6, 26 * 10 * 1e6)
+    await sleep(10 * SLEEP_FACTOR)
+    expect(et.getRawValue()).to.be.within(9 * ET_FACTOR, 14 * ET_FACTOR)
+    await sleep(10* SLEEP_FACTOR)
+    expect(et.getRawValue()).to.be.within(19 * ET_FACTOR, 26 * ET_FACTOR)
   })
 
   it('#getRawValue with #pause', async () => {
     et.start()
-    await sleep(10 * 10)
+    await sleep(10 * SLEEP_FACTOR)
     et.pause()
     let value = et.getRawValue()
-    expect(value).to.be.within(9 * 10 * 1e6, 14 * 10 * 1e6)
-    await sleep(10 * 10)
+    expect(value).to.be.within(9 * ET_FACTOR, 14 * ET_FACTOR)
+    await sleep(10 * SLEEP_FACTOR)
     expect(et.getRawValue()).to.equal(value)
   })
 
@@ -116,18 +120,18 @@ describe('ElapsedTime', () => {
 
   it('#getValue', async () => {
     et.start()
-    await sleep(10 * 10)
+    await sleep(10 * SLEEP_FACTOR)
     let value = et.getValue()
-    expect(parseInt(value.slice(0, -2), 10)).to.be.within(9 * 10 * 1e6, 14 * 10 * 1e6)
+    expect(parseInt(value.slice(0, -2), 10)).to.be.within(9 * ET_FACTOR, 14 * ET_FACTOR)
     expect(value.slice(-2)).to.equal('ns')
   })
 
   it('#getValue with #pause', async () => {
     et.start()
-    await sleep(10 * 10)
+    await sleep(10 * SLEEP_FACTOR)
     et.pause()
     let value = et.getValue()
-    expect(parseInt(value.slice(0, -2), 10)).to.be.within(9 * 10 * 1e6, 14 * 10 * 1e6)
+    expect(parseInt(value.slice(0, -2), 10)).to.be.within(9 * ET_FACTOR, 14 * ET_FACTOR)
     expect(value.slice(-2)).to.equal('ns')
     expect(et.getValue()).to.equal(value)
   })
