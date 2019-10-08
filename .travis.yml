@@ -26,19 +26,20 @@ matrix:
     # - node_js: 12 # Active LTS 4Q-October 2019
     #   env: TEST_SUITE=test:browser
 
+    # XXX TEMPORARY MOVED FOR NOW:
     # test suite on Node.js & headless Chrome browser
-    - node_js: 0.12 # DEPRECATED
-      env: TEST_SUITE=test
-    - node_js: 4 # DEPRECATED
-      env: TEST_SUITE=test
-    - node_js: 6 # DEPRECATED
-      env: TEST_SUITE=test
-    - node_js: 8 # EOL December 2019
-      env: TEST_SUITE=test
-    - node_js: 10
-      env: TEST_SUITE=test
-    - node_js: 12
-      env: TEST_SUITE=test
+    # - node_js: 0.12 # DEPRECATED
+    #   env: TEST_SUITE=test
+    # - node_js: 4 # DEPRECATED
+    #   env: TEST_SUITE=test
+    # - node_js: 6 # DEPRECATED
+    #   env: TEST_SUITE=test
+    # - node_js: 8 # EOL December 2019
+    #   env: TEST_SUITE=test
+    # - node_js: 10
+    #   env: TEST_SUITE=test
+    # - node_js: 12
+    #   env: TEST_SUITE=test
 
     # test suite on Node.js only on Windows & osx (macOS)
     # TBD issues with headless Chrome browser test on Windows & macOS
@@ -79,15 +80,16 @@ matrix:
       script:
         - npm run compile && npm run distcheck:prepare && npm run $TEST_SUITE
 
+    # XXX TEMPORARY MOVED FOR NOW:
     # dist - full test, with help from headless Chrome browser
-    - node_js: 0.12 # DEPRECATED
-      env: TEST_SUITE=dist
-    - node_js: 4 # DEPRECATED
-      env: TEST_SUITE=dist
-    - node_js: 10
-      env: TEST_SUITE=dist
-    - node_js: 12
-      env: TEST_SUITE=dist
+    # - node_js: 0.12 # DEPRECATED
+    #   env: TEST_SUITE=dist
+    # - node_js: 4 # DEPRECATED
+    #   env: TEST_SUITE=dist
+    # - node_js: 10
+    #   env: TEST_SUITE=dist
+    # - node_js: 12
+    #   env: TEST_SUITE=dist
 
     # distcheck:test:node on Windows & osx (macOS)
     - node_js: 0.12 # DEPRECATED
@@ -130,6 +132,32 @@ matrix:
       os: osx # macOS
       script:
         - npm run compile && npm run distcheck:prepare && npm run $TEST_SUITE
+
+    # XXX TEMPORARY MOVED FOR NOW:
+    # test suite on Node.js & headless Chrome browser
+    - node_js: 0.12 # DEPRECATED
+      env: TEST_SUITE=test
+    - node_js: 4 # DEPRECATED
+      env: TEST_SUITE=test
+    - node_js: 6 # DEPRECATED
+      env: TEST_SUITE=test
+    - node_js: 8 # EOL December 2019
+      env: TEST_SUITE=test
+    - node_js: 10
+      env: TEST_SUITE=test
+    - node_js: 12
+      env: TEST_SUITE=test
+
+    # XXX TEMPORARY MOVED FOR NOW:
+    # dist - full test, with help from headless Chrome browser
+    - node_js: 0.12 # DEPRECATED
+      env: TEST_SUITE=dist
+    - node_js: 4 # DEPRECATED
+      env: TEST_SUITE=dist
+    - node_js: 10
+      env: TEST_SUITE=dist
+    - node_js: 12
+      env: TEST_SUITE=dist
 
 install:
   - npm install
