@@ -3,7 +3,7 @@ module.exports = function (config) {
     browsers: ['ChromeHeadless'],
     frameworks: ['browserify', 'mocha'],
     files: [
-      'node_modules/babel-core/browser-polyfill.js',
+      'node_modules/babel-polyfill/browser.js',
       'test/*.js'
     ],
     preprocessors: {

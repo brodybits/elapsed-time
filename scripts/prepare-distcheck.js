@@ -89,6 +89,14 @@ commandSync(
     stdio: 'inherit'
   })
 
+commandSync(
+  'npm install --save-dev babel-polyfill@' +
+    require('../package.json').devDependencies['babel-polyfill'],
+  {
+    cwd: DISTCHECK_BROWSER_ROOT,
+    stdio: 'inherit'
+  })
+
 mkdirSync(DISTCHECK_NODE_ROOT)
 copyDirSync('lib', path.join(DISTCHECK_NODE_ROOT, 'src'))
 copyDirSync('test', path.join(DISTCHECK_NODE_ROOT, 'test'))
