@@ -12,15 +12,19 @@ matrix:
     - node_js: 10
       env: TEST_SUITE=coveralls
 
-    # test suite on headless Chrome browser only
-    - node_js: 10
-      env: TEST_SUITE=test:browser
-    - node_js: 12
-      env: TEST_SUITE=test:browser
-
     # test suite on Node.js only
-    - node_js: 10
+    - node_js: 10 # Active LTS / Maintenance LTS October 2019
       env: TEST_SUITE=test:node
+    # FUTURE TBD Node.js 12 instead:
+    # - node_js: 12 # Active LTS 4Q-October 2019
+    #   env: TEST_SUITE=test:node
+
+    # test suite on headless Chrome browser only
+    - node_js: 10 # Active LTS / Maintenance LTS October 2019
+      env: TEST_SUITE=test:browser
+    # FUTURE TBD Node.js 12 instead:
+    # - node_js: 12 # Active LTS 4Q-October 2019
+    #   env: TEST_SUITE=test:browser
 
     # test suite on Node.js & headless Chrome browser
     # TBD SKIP FULL TESTING on Windows & macOS ("osx") for now,
