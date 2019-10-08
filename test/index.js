@@ -58,18 +58,18 @@ describe('ElapsedTime', () => {
 
   it('#resume & #getRawValue', async () => {
     et.start()
-    await sleep(10)
+    await sleep(10 * 10)
     et.pause()
-    await sleep(10)
+    await sleep(10 * 10)
     et.resume()
-    await sleep(10)
-    expect(et.getRawValue()).to.be.within(19 * 1e6, 28 * 1e6)
+    await sleep(10 * 10)
+    expect(et.getRawValue()).to.be.within(19 * 10 * 1e6, 28 * 10 * 1e6)
   })
 
   it('#sleep & #getRawValue', async () => {
-    et.start().sleep(10)
-    await sleep(12)
-    expect(et.getRawValue()).to.be.within(0, 4 * 1e6)
+    et.start().sleep(10 * 10)
+    await sleep(12 * 10)
+    expect(et.getRawValue()).to.be.within(0, 4 * 10 * 1e6)
   })
 
   it('#sleep without #start generate Error', () => {
@@ -83,9 +83,9 @@ describe('ElapsedTime', () => {
 
   it('#reset & #getRawValue', async () => {
     et.start()
-    await sleep(10)
+    await sleep(10 * 10)
     et.reset().start()
-    expect(et.getRawValue()).to.be.below(1 * 1e6)
+    expect(et.getRawValue()).to.be.below(1 * 10 * 1e6)
   })
 
   it('#getRawValue without #start generate Error', () => {
@@ -94,19 +94,19 @@ describe('ElapsedTime', () => {
 
   it('#getRawValue', async () => {
     et.start()
-    await sleep(10)
-    expect(et.getRawValue()).to.be.within(9 * 1e6, 14 * 1e6)
-    await sleep(10)
-    expect(et.getRawValue()).to.be.within(19 * 1e6, 26 * 1e6)
+    await sleep(10 * 10)
+    expect(et.getRawValue()).to.be.within(9 * 10 * 1e6, 14 * 10 * 1e6)
+    await sleep(10* 10)
+    expect(et.getRawValue()).to.be.within(19 * 10 * 1e6, 26 * 10 * 1e6)
   })
 
   it('#getRawValue with #pause', async () => {
     et.start()
-    await sleep(10)
+    await sleep(10 * 10)
     et.pause()
     let value = et.getRawValue()
-    expect(value).to.be.within(9 * 1e6, 14 * 1e6)
-    await sleep(10)
+    expect(value).to.be.within(9 * 10 * 1e6, 14 * 10 * 1e6)
+    await sleep(10 * 10)
     expect(et.getRawValue()).to.equal(value)
   })
 
@@ -116,18 +116,18 @@ describe('ElapsedTime', () => {
 
   it('#getValue', async () => {
     et.start()
-    await sleep(10)
+    await sleep(10 * 10)
     let value = et.getValue()
-    expect(parseInt(value.slice(0, -2), 10)).to.be.within(9 * 1e6, 14 * 1e6)
+    expect(parseInt(value.slice(0, -2), 10)).to.be.within(9 * 10 * 1e6, 14 * 10 * 1e6)
     expect(value.slice(-2)).to.equal('ns')
   })
 
   it('#getValue with #pause', async () => {
     et.start()
-    await sleep(10)
+    await sleep(10 * 10)
     et.pause()
     let value = et.getValue()
-    expect(parseInt(value.slice(0, -2), 10)).to.be.within(9 * 1e6, 14 * 1e6)
+    expect(parseInt(value.slice(0, -2), 10)).to.be.within(9 * 10 * 1e6, 14 * 10 * 1e6)
     expect(value.slice(-2)).to.equal('ns')
     expect(et.getValue()).to.equal(value)
   })
