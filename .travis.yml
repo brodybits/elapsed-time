@@ -12,15 +12,17 @@ matrix:
     - node_js: 10
       env: TEST_SUITE=coveralls
 
-    # test suite on headless Chrome browser only
-    - node_js: 10
-      env: TEST_SUITE=test:browser
-    - node_js: 12
-      env: TEST_SUITE=test:browser
-
     # test suite on Node.js only
-    - node_js: 10
+    - node_js: 10 # Active LTS 3Q 2019
       env: TEST_SUITE=test:node
+    - node_js: 12 # Active LTS 4Q 2019
+      env: TEST_SUITE=test:node
+
+    # test suite on headless Chrome browser only
+    - node_js: 10 # Active LTS 3Q 2019
+      env: TEST_SUITE=test:browser
+    - node_js: 12 # Active LTS 4Q 2019
+      env: TEST_SUITE=test:browser
 
     # test suite on Node.js & headless Chrome browser
     - node_js: 0.12 # DEPRECATED
