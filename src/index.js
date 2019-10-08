@@ -116,8 +116,11 @@ export default class ElapsedTime {
    * @return {ElapsedTime}
    */
   sleep (timeout) {
+    // const resume = ::this.resume
+    const resume = this.resume.bind(this)
+
     this.pause()
-    setTimeout(::this.resume, timeout)
+    setTimeout(resume, timeout)
 
     return this
   }
