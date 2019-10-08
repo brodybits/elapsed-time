@@ -74,14 +74,16 @@ commandSync('npm init -y', {
 })
 
 commandSync(
-  'npm install babel-runtime@' + require('../package.json').dependencies['babel-runtime'],
+  'npm install babel-runtime@' +
+    require('../package.json').dependencies['babel-runtime'],
   {
     cwd: DISTCHECK_BROWSER_ROOT,
     stdio: 'inherit'
   })
 
 commandSync(
-  'npm install babel-core@' + require('../package.json').devDependencies['babel-core'],
+  'npm install --save-dev babel-core@' +
+    require('../package.json').devDependencies['babel-core'],
   {
     cwd: DISTCHECK_BROWSER_ROOT,
     stdio: 'inherit'
