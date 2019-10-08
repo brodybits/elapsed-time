@@ -35,6 +35,9 @@ matrix:
       env: TEST_SUITE=test
     - node_js: 12
       env: TEST_SUITE=test
+
+    # test suite on Node.js only on Windows & osx (macOS)
+    # TBD issues with headless Chrome browser test on Windows & macOS
     - node_js: 0.12 # DEPRECATED
       env: TEST_SUITE=test
       os: windows
@@ -81,30 +84,48 @@ matrix:
       env: TEST_SUITE=dist
     - node_js: 12
       env: TEST_SUITE=dist
+
+    # distcheck:test:node on Windows & osx (macOS)
     - node_js: 0.12 # DEPRECATED
-      env: TEST_SUITE=dist
+      env: TEST_SUITE=distcheck:test:node
       os: windows
+      script:
+        - npm run compile && npm run distcheck:prepare && npm run $TEST_SUITE
     - node_js: 0.12 # DEPRECATED
-      env: TEST_SUITE=dist
+      env: TEST_SUITE=distcheck:test:node
       os: osx # macOS
+      script:
+        - npm run compile && npm run distcheck:prepare && npm run $TEST_SUITE
     - node_js: 4 # DEPRECATED
-      env: TEST_SUITE=dist
+      env: TEST_SUITE=distcheck:test:node
       os: windows
+      script:
+        - npm run compile && npm run distcheck:prepare && npm run $TEST_SUITE
     - node_js: 4 # DEPRECATED
-      env: TEST_SUITE=dist
+      env: TEST_SUITE=distcheck:test:node
       os: osx # macOS
+      script:
+        - npm run compile && npm run distcheck:prepare && npm run $TEST_SUITE
     - node_js: 10
-      env: TEST_SUITE=dist
+      env: TEST_SUITE=distcheck:test:node
       os: windows
+      script:
+        - npm run compile && npm run distcheck:prepare && npm run $TEST_SUITE
     - node_js: 10
-      env: TEST_SUITE=dist
+      env: TEST_SUITE=distcheck:test:node
       os: osx # macOS
+      script:
+        - npm run compile && npm run distcheck:prepare && npm run $TEST_SUITE
     - node_js: 12
-      env: TEST_SUITE=dist
+      env: TEST_SUITE=distcheck:test:node
       os: windows
+      script:
+        - npm run compile && npm run distcheck:prepare && npm run $TEST_SUITE
     - node_js: 12
-      env: TEST_SUITE=dist
+      env: TEST_SUITE=distcheck:test:node
       os: osx # macOS
+      script:
+        - npm run compile && npm run distcheck:prepare && npm run $TEST_SUITE
 
 install:
   - npm install
