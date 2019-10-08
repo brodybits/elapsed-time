@@ -39,28 +39,28 @@ matrix:
     # test suite on Node.js only on Windows & osx (macOS)
     # TBD issues with headless Chrome browser test on Windows & macOS
     - node_js: 0.12 # DEPRECATED
-      env: TEST_SUITE=test
+      env: TEST_SUITE=test:browser
       os: windows
     - node_js: 0.12 # DEPRECATED
-      env: TEST_SUITE=test
+      env: TEST_SUITE=test:browser
       os: osx # macOS
     - node_js: 4 # DEPRECATED
-      env: TEST_SUITE=test
+      env: TEST_SUITE=test:browser
       os: windows
     - node_js: 4 # DEPRECATED
-      env: TEST_SUITE=test
+      env: TEST_SUITE=test:browser
       os: osx # macOS
     - node_js: 10
-      env: TEST_SUITE=test
+      env: TEST_SUITE=test:browser
       os: windows
     - node_js: 10
-      env: TEST_SUITE=test
+      env: TEST_SUITE=test:browser
       os: osx # macOS
     - node_js: 12
-      env: TEST_SUITE=test
+      env: TEST_SUITE=test:browser
       os: windows
     - node_js: 12
-      env: TEST_SUITE=test
+      env: TEST_SUITE=test:browser
       os: osx # macOS
 
     # distcheck:test:browser
