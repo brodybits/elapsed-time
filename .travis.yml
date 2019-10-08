@@ -12,47 +12,81 @@ matrix:
     - node_js: 10
       env: TEST_SUITE=coveralls
 
-    # test suite on Node.js only
-    - node_js: 0.12 # DEPRECATED
-      env: TEST_SUITE=test:node
-    - node_js: 4 # DEPRECATED
-      env: TEST_SUITE=test:node
-    - node_js: 6 # DEPRECATED
-      env: TEST_SUITE=test:node
-    - node_js: 8 # EOL December 2019
-      env: TEST_SUITE=test:node
+    # test suite on headless Chrome browser only
     - node_js: 10
-      env: TEST_SUITE=test:node
+      env: TEST_SUITE=test:browser
     - node_js: 12
-      env: TEST_SUITE=test:node
-    # TBD SKIP TESTING on Windows & macOS ("osx") for now,
-    # due to some known test failures
-    # ...
-    # - node_js: ...
-    #   env: TEST_SUITE=test:node
-    #   os: windows
-    # - node_js: ...
-    #   env: TEST_SUITE=test:node
-    #   os: osx
-    # ...
+      env: TEST_SUITE=test:browser
 
-    # dist - full test, with help from headless Chrome browser
+    # test suite on Node.js only
     - node_js: 10
-      env:
-        - TEST_SUITE=dist
-          TEST_BROWSER_CHROME_HEADLESS=1
-      script:
-        # NOTE: As commented in karma.conf.js,
-        # manual installation of puppeteer@1
-        # is required in order to avoid breaking
-        # Travis CI on DEPRECATED Node.js 0.12 & 4.
-        - npm i --save-dev puppeteer@1 && npm run $TEST_SUITE
+      env: TEST_SUITE=test:node
 
-    # xxxxx
+    # test suite on Node.js & headless Chrome browser
+    # TBD SKIP FULL TESTING on Windows & macOS ("osx") for now,
+    # due to timing issues with async tests
+    - node_js: 0.12 # DEPRECATED
+      env: TEST_SUITE=test
     - node_js: 4 # DEPRECATED
+      env: TEST_SUITE=test
+    - node_js: 6 # DEPRECATED
+      env: TEST_SUITE=test
+    - node_js: 8 # EOL December 2019
+      env: TEST_SUITE=test
+    - node_js: 10
+      env: TEST_SUITE=test
+    - node_js: 12
+      env: TEST_SUITE=test
+
+    # test:node:skipasync on Node.js on Windows & macOS ("osx")
+    # TBD SKIP Node.js 12 on Windows for now, at least
+    # (seemed to be problematic)
+    # - node_js: 0.12 # DEPRECATED
+    #   env: TEST_SUITE=test:node:skipasync
+    #   os: windows
+    - node_js: 0.12 # DEPRECATED
+      env: TEST_SUITE=test:node:skipasync
+      os: osx # macOS
+    - node_js: 4 # DEPRECATED
+      env: TEST_SUITE=test:node:skipasync
+      os: windows
+    - node_js: 4 # DEPRECATED
+      env: TEST_SUITE=test:node:skipasync
+      os: osx # macOS
+    - node_js: 10
+      env: TEST_SUITE=test:node:skipasync
+      os: windows
+    - node_js: 10
+      env: TEST_SUITE=test:node:skipasync
+      os: osx # macOS
+    - node_js: 12
+      env: TEST_SUITE=test:node:skipasync
+      os: windows
+    - node_js: 12
+      env: TEST_SUITE=test:node:skipasync
+      os: osx # macOS
+
+    # distcheck:test:browser
+    - node_js: 10
+      env: TEST_SUITE=distcheck:test:browser
+      script:
+        - npm run compile && npm run distcheck:prepare && npm run $TEST_SUITE
+
+    # distcheck:test:node
+    - node_js: 10
       env: TEST_SUITE=distcheck:test:node
       script:
         - npm run compile && npm run distcheck:prepare && npm run $TEST_SUITE
+
+    # dist - full test, with help from headless Chrome browser
+    - node_js: 0.12 # DEPRECATED
+      env: TEST_SUITE=dist
+    - node_js: 4 # DEPRECATED
+      env: TEST_SUITE=dist
+    - node_js: 10
+      env: TEST_SUITE=dist
+    - node_js: 12
+      env: TEST_SUITE=dist
 
 install:
   - npm install
