@@ -1,4 +1,4 @@
-import hrtime from './hrtime'
+const hrtime = require('./hrtime')
 
 /**
  * @param {number} value Time in nanoseconds
@@ -21,9 +21,9 @@ let defaultFormatter = (value) => {
 }
 
 /**
- * @class ElapsedTime
+ * @class ElapsedTime (exported class)
  */
-export default class ElapsedTime {
+class ElapsedTime {
   /**
    * @constructor
    * @param {Object} [opts]
@@ -165,3 +165,5 @@ export default class ElapsedTime {
     return formatter(this.getRawValue())
   }
 }
+
+module.exports = ElapsedTime
